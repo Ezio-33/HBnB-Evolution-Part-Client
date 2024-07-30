@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HBnB - Connexion</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="images/icon.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div data-include="./inc/header.html"></div>
+
+    <main>
+      <h1>Connexion</h1>
+
+      <form id="login-form">
+        <div>
+          <label for="email">Email :</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div>
+          <label for="password">Mot de passe :</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <button type="submit" class="submit-button">Se connecter</button>
+      </form>
+    </main>
+
+    <div data-include="./inc/footer.html"></div>
+
+    <script src="js/scripts.js"></script>
+    <script src="js/includes.js"></script>
+  </body>
+</html>
