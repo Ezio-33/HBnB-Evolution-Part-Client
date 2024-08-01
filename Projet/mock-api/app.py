@@ -5,6 +5,8 @@ import json
 import os
 
 app = Flask(__name__, static_folder='../')
+app.config.from_object('config.Config')  # Charger la configuration
+
 CORS(app)
 
 jwt = JWTManager(app)
@@ -33,14 +35,17 @@ def serve_static(path):
 def login():
     email = request.json.get('email')
     password = request.json.get('password')
-
+    
+    print(f"Tentative de connexion - Email: {email}, Password: {password}")
+    
     user = next((u for u in users if u['email'] == email and u['password'] == password), None)
     
     if not user:
-        print(f"User not found or invalid password for: {email}")
+        print(f"Échec de la connexion pour l'email: {email}")
         return jsonify({"msg": "Invalid credentials"}), 401
 
     access_token = create_access_token(identity=user['id'])
+    print(f"Connexion réussie pour l'utilisateur: {user['id']}")
     return jsonify(access_token=access_token)
 
 @app.route('/places', methods=['GET'])
